@@ -1,0 +1,139 @@
+<div class="wrapper" fxLayout="column">
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Export Area</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div fxLayout="column" [formGroup]="form">
+          <div>
+            <mat-form-field>
+              <mat-label>Language</mat-label>
+              <mat-select formControlName="language" required>
+                <mat-option
+                  *ngFor="let language of languageSelection"
+                  [value]="language.value"
+                  >{{ language.label }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.controls['language'].hasError('required')"
+                >language is required</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div fxLayout="row">
+            <div>
+              <mat-form-field>
+                <mat-label>from </mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="fromDatePicker"
+                  formControlName="fromDatePicker"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="fromDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #fromDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="margin-left">
+              <mat-form-field>
+                <mat-label>to </mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="toDatePicker"
+                  formControlName="toDatePicker"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="toDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #toDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Countries</mat-label>
+              <mat-select formControlName="countries" multiple>
+                <mat-option
+                  *ngFor="let data of selectCountryData; let i = index"
+                  [value]="data"
+                  >{{ data }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Population</mat-label>
+              <mat-select formControlName="population" multiple>
+                <mat-option
+                  *ngFor="let data of selectPopulationData; let i = index"
+                  [value]="data"
+                  >{{ data }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Assessment</mat-label>
+              <mat-select formControlName="assessment">
+                <mat-option [value]="'smp'">strategic mobility plan</mat-option>
+                <mat-option [value]="'evaluation'"
+                  >planning activity evaluation</mat-option
+                >
+                <mat-option [value]="'all'">all</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-checkbox formControlName="processActivePersons">
+              User has been involved in the SUMP development.
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox formControlName="dataContainsTestFilter">
+              Exclude data sets that contain word 'test'.
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Max. Sect. with Score = 0</mat-label>
+              <mat-select formControlName="minimumScore">
+                <mat-option
+                  *ngFor="let data of selectCategoryNumber; let i = index"
+                  [value]="data"
+                  >{{ data }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-label
+              >If you wish to export solely datasets with an average score &ne;
+              0, please select a number &le; 6.</mat-label
+            >
+          </div>
+          <button color="accent" (click)="export()" mat-raised-button>
+            {{
+              exporting && progress < 100
+                ? "Preparing your file... (Progress: " + progress + "%)"
+                : "Export Statistical Data"
+            }}
+          </button>
+          <mat-progress-bar
+            *ngIf="exporting"
+            mode="indeterminate"
+            value="progress_value"
+          ></mat-progress-bar>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

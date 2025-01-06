@@ -1,0 +1,10 @@
+<div fxLayout="column" fxFlexFill>
+    <div fxFlex="90%" fxLayout="row" fxLayoutAlign="center center">
+        <span class="uuidText">{{data.text}} {{data.uuid}}</span>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+        <button matDialogClose mat-stroked-button color="warning">Cancel <i class="material-icons">cancel</i></button>
+        <button matDialogClose (click)="onCopy()" class="buttonMargin" mat-raised-button color="accent">Copy <i class="material-icons">file_copy</i></button>
+    </div>
+</div>

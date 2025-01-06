@@ -1,0 +1,76 @@
+@import '../../../breakpoints';
+
+:host {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  button {
+      text-align: center;
+  }
+
+  #banner {
+    padding: 5%;
+  }
+
+  .disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  a {
+    height: 100%;
+    margin-top: 5px;
+
+
+
+    @include xxl {
+      margin-top: 10px;
+    }
+  }
+
+  .nav-list-item {
+    padding: 10px auto;
+  }
+
+  .nav-list-item:focus {
+    background-color: #60bb46;
+  }
+
+  .nav-list-item:hover {
+    background-color: #60bb46;
+  }
+
+  .sidenav {
+    .icon-wrapper {
+      text-align: center;
+      margin: 0 10px 0 0;
+      min-width: 24px;
+      font-size: 1.25rem;
+    }
+  }
+
+  .menu-button {
+    @include md {
+      margin-right: 15px;
+    }
+  }
+
+  #wrapper {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .imprint-privacy {
+    height: 30px !important;
+    text-align: center;
+  }
+
+  .toolbar {
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    z-index: 10;
+    border-bottom: 1;
+    border-color: black;
+  }

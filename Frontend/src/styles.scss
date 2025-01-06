@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+$flag-icon-css-path: '~flag-icon-css/flags' !default;
+@import "~flag-icon-css/sass/flag-icon";
+
+
+// Copy the palettes from your selected theme (usually theme.scss).
+$app-primary: mat-palette($mat-grey);
+$app-accent:  mat-palette($mat-light-blue);
+$app-warn:    mat-palette($mat-pink);
+
+// Create your Sass color vars (will be available in all the project)
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Spacing between radion buttons
+mat-radio-group {
+  mat-radio-button {
+      margin: 5px 0;
+  }
+}
+
+// default config for mat-card container
+mat-card {
+  padding-top: 0;
+  text-align: justify;
+
+  mat-card-title {
+    margin: 0;
+  }
+
+  mat-card-content {
+    padding: 16px 16px 0 16px;
+  }
+}
+
+// Radio fix for white-space
+mat-radio-button .mat-radio-label-content {
+  white-space: normal;
+  margin: auto;
+}
+
+mat-radio-button .mat-radio-label {
+  align-items: normal;
+}
+
+
+// Popup for invalid input
+.snackbar {
+  color: $warn;
+  font-weight: bold;
+}
+
+.mat-card-header-text {
+  width: 100%;
+}
+
+mat-icon {
+  margin: 0 0 5px 0;
+}
+
+img {
+  max-width: 100%;
+}

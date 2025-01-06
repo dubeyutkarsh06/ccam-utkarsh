@@ -1,0 +1,25 @@
+#footer {
+    margin-top: 16px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+
+    img {
+      min-height: 75px;
+      max-height: 75px;
+      flex-grow: 1;
+      object-fit: contain;
+    }
+  }
+  .full-width {
+    display: flex;
+  }
+  .mr20 {
+    margin-right: 20px;
+  }
+  .mh85 {
+    min-height: 85px;
+  }

@@ -1,0 +1,56 @@
+.title {
+  font-weight: bold;
+}
+
+.noMarginBottom {
+  margin-bottom: 0;
+}
+
+img {
+  height: 100%;
+  width: auto;
+  float: left;
+}
+
+a:link, a:visited {
+  color: blue;
+}
+
+ul {
+  padding: 0;
+}
+
+:host ::ng-deep mat-expansion-panel {
+
+  .mat-expansion-panel-header.mat-expanded {
+    min-height: 100px;
+  }
+
+  mat-expansion-panel-header  {
+    height: 100%;
+
+    .mat-content {
+      height: 100% !important;
+
+      .expansion-header-content-wrapper {
+        width: 100%;
+
+        .expansion-panel-content {
+          width: 100%;
+          h4 {
+            margin: 5px 0 5px 0;
+          }
+
+          .rating-text {
+            width: 100%;
+            text-align: left;
+            span {
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

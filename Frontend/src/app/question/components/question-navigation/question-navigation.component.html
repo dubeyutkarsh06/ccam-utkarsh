@@ -1,0 +1,20 @@
+<div fxLayout="row">
+    <div fxFlex fxLayoutAlign="start center">
+        <button (click)="lastClick()" color="accent" mat-raised-button>
+            <mat-icon>navigate_before</mat-icon>
+            {{button_previous}}
+        </button>
+    </div>
+  <div fxFley fxLayoutAlign="center center" *ngIf="questionId === 108">
+    <button (click)="reload()" color="accent" mat-raised-button>
+      {{ button_restart }}
+    </button>
+  </div>
+
+    <div fxFlex fxLayoutAlign="end center">
+        <button (click)="nextClick()" color="accent" mat-raised-button>
+          {{button_next}}
+          <mat-icon inline=false>navigate_next</mat-icon>
+        </button>
+    </div>
+</div>

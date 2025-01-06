@@ -1,0 +1,4 @@
+<div fxLayout="column" [formGroup]="formGroup">
+    <mat-checkbox *ngFor="let answer of answers; let i = index" (click)="exclusiveChecked(answer)" [formControlName]="i">{{answer.translation}}</mat-checkbox>
+    <mat-error *ngIf="formGroup.invalid && formGroup.touched">{{error_text}}</mat-error>
+</div>

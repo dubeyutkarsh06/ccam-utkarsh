@@ -1,0 +1,44 @@
+@import "../../../breakpoints";
+
+.marginSmall {
+  margin: 16px 0 0 0;
+}
+
+.wrapper {
+  padding: 0;
+
+  @include md {
+    padding: 2.5% 5%;
+  }
+
+  @include lg {
+    padding: 2.5% 10%;
+  }
+
+  @include xl {
+    padding: 2.5% 15%;
+  }
+
+  @include xxl {
+    padding: 2.5% 20%;
+  }
+}
+
+mat-card-content {
+  text-align: left;
+  @include lg {
+    min-height: 400px;
+  }
+}
+
+button {
+  margin: 0 2%;
+}
+
+mat-card {
+  display: block !important;
+}
+
+#input-wrapper {
+  min-height: 57px;
+}

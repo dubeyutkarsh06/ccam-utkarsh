@@ -1,0 +1,90 @@
+<div class="wrapper" fxLayout="column">
+  <div
+    fxLayout="column"
+    fxFlex
+    fxLayoutAlign="center stretch"
+    *ngIf="currentQuestion !== null"
+  >
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progressBarData"
+      color="accent"
+    ></mat-progress-bar>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span id="title" fxFlex="33">{{ currentQuestion.category }}</span>
+            <span fxFlex="33" id="uuid"
+              >{{ questionTranslationData.your_code_text }}
+              {{ this.uuidService.getUuid() }}</span
+            >
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content fxLayout="column">
+        <div role="title">
+          <h2>
+            <span
+              *ngIf="isNotLastQuestion && currentQuestion.type != 'instruction'"
+              >{{ this.questionIndex }} - </span
+            >{{ currentQuestion.title }}
+          </h2>
+          <h4 [innerHTML]="this.currentQuestion.subTitle"></h4>
+        </div>
+
+        <div role="content" fxFlex fxLayout="column" class="marginSmall">
+          <app-question-checkbox
+            [answers]="currentQuestion.answers"
+            [previouslySelectedAnswers]="currentQuestion.selectedAnswers"
+            [error_text]="questionTranslationData.checkbox_error_message"
+            *ngIf="currentQuestion.type === 'checkbox'"
+          >
+          </app-question-checkbox>
+
+          <app-question-radio
+            [answers]="currentQuestion.answers"
+            [previouslySelectedAnswers]="currentQuestion.selectedAnswers"
+            [error_text]="questionTranslationData.radio_error_message"
+            *ngIf="currentQuestion.type === 'radio'"
+          >
+          </app-question-radio>
+
+          <app-question-free
+            [answers]="currentQuestion.answers"
+            [previouslySelectedAnswers]="currentQuestion.selectedAnswers"
+            [type]="currentQuestion.type"
+            [isNotLastQuestion]="isNotLastQuestion"
+            [remaining_text]="questionTranslationData.pie_chart_remaining"
+            [free_label]="questionTranslationData.free_placeholder[0]"
+            *ngIf="currentQuestion.type.includes('text')"
+          >
+          </app-question-free>
+
+          <app-question-dropdown
+            [answers]="currentQuestion.answers"
+            [previouslySelectedAnswers]="currentQuestion.selectedAnswers"
+            [error_text]="questionTranslationData.dropdown_error_message"
+            [select_text]="questionTranslationData.select_placeholder_text"
+            *ngIf="currentQuestion.type === 'dropdown'"
+          >
+          </app-question-dropdown>
+        </div>
+
+        <div role="navigation">
+          <app-question-navigation
+            (navClick)="navClick($event)"
+            [questionId]="this.currentQuestion.id"
+            [button_previous]="questionTranslationData.button_previous"
+            [button_restart]="questionTranslationData.button_restart"
+            [button_next]="questionTranslationData.button_next"
+          >
+          </app-question-navigation>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <app-footer></app-footer>
+  </div>
+</div>

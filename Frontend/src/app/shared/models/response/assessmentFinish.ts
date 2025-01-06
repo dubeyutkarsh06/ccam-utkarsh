@@ -1,0 +1,16 @@
+export interface AssessmentFinish {
+  title: [],
+  subtitle: [],
+  explanation: string[],
+  comparison_code: [],
+  chart_legend: [],
+  rating_text: [],
+  feedback_title: [],
+  feedback_explanation: [],
+  q_table_title: [],
+  finish_text: [],
+  finish_links: {},
+  button_text: [],
+  wrongCodeError: [],
+  csv_export_button: [],
+}

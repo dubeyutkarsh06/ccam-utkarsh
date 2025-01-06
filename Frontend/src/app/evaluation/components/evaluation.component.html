@@ -1,0 +1,105 @@
+<div class="wrapper" *ngIf="this.assessmentFinish !== undefined">
+  <mat-card fxLayout="column" id="mat-card-wrapper">
+    <mat-card-header>
+      <mat-card-title>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span>{{ this.assessmentFinish.title }}</span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content fxLayout="column" id="card-content">
+      <div fxLayout="column" id="pdf-wrapper">
+        <div id="visual_overview">
+          <div>
+            <h4>{{ this.assessmentFinish.subtitle }}</h4>
+            <p [innerHTML]="this.assessmentFinish.explanation"></p>
+          </div>
+
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end start"
+            id="input-wrapper"
+            [formGroup]="form"
+          >
+            <mat-form-field data-html2canvas-ignore="true">
+              <input
+                matInput
+                formControlName="comparison"
+                (keyup.enter)="updateComparison($event.target.value)"
+                type="text"
+                placeholder="{{ assessmentFinish.comparison_code }}"
+              />
+              <mat-error>{{ assessmentFinish.wrongCodeError }}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <app-radar-chart
+            id="radar_chart"
+            [comparison]="this.comparisonChart"
+            [labels]="this.evaluationService.chartCategories"
+            [scoring]="this.evaluationService.scoring"
+            [rating_text]="assessmentFinish.rating_text"
+            [startLabel]="assessmentFinish.chart_legend"
+          >
+          </app-radar-chart>
+        </div>
+
+        <div id="feedback-principles" class="pdf-break">
+          <div class="marginSmall">
+            <h4>{{ this.assessmentFinish.feedback_title }}</h4>
+            <p [innerHTML]="this.assessmentFinish.feedback_explanation"></p>
+          </div>
+          <app-feedback
+            id="feedback"
+            [feedback]="this.feedbacks"
+            [rating_text]="assessmentFinish.rating_text"
+          >
+          </app-feedback>
+        </div>
+        <div class="marginSmall pdf-break">
+          <h4>{{ this.assessmentFinish.q_table_title }}</h4>
+        </div>
+        <app-question-table
+          id="question-table"
+          [comparison]="this.comparisonTable"
+        >
+        </app-question-table>
+      </div>
+
+      <app-finish
+        data-html2canvas-ignore="true"
+        class="marginSmall"
+        [finish]="this.assessmentFinish"
+      >
+      </app-finish>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="end center"
+        data-html2canvas-ignore="true"
+      >
+        <button
+          (click)="downloadPDF()"
+          color="accent"
+          mat-raised-button
+          data-html2canvas-ignore="true"
+        >
+          {{ assessmentFinish.button_text }}
+        </button>
+        <button
+          (click)="getCSVFile()"
+          color="accent"
+          mat-raised-button
+          data-html2canvas-ignore="true"
+        >
+          {{ assessmentFinish.csv_export_button }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <app-footer id="footer"></app-footer>
+</div>

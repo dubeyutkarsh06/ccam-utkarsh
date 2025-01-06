@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-select
+    (ngModelChange)="updateModel($event)"
+    [(ngModel)]="selectedLanguage"
+    [disabled]="false"
+    style="font-size: 1rem"
+  >
+    <mat-select-trigger>
+      <span [class]="classes"></span><span>{{ selectedLanguage }}</span>
+    </mat-select-trigger>
+    <mat-option
+      [value]="language.key"
+      *ngFor="let language of languages | keyvalue"
+      ><span [class]="language.value"></span
+      ><span>{{ language.key }}</span></mat-option
+    >
+  </mat-select>
+</mat-form-field>

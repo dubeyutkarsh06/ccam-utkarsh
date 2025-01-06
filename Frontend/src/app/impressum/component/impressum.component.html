@@ -1,0 +1,336 @@
+<div
+  fxLayout="row"
+  class="wrapper"
+  *ngIf="
+    this.languageService.getLanguage() !== 'German' &&
+    this.languageService.getLanguage() !== 'Spanish'
+  "
+>
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Imprint</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div>
+          <p>Rupprecht Consult - Forschung und Beratung GmbH</p>
+          <p>Clever Street 13-15</p>
+          <p>50668 Cologne</p>
+          <p>Commercial register: 30833</p>
+          <p>Register court: Local court Cologne</p>
+          <p>Represented by: Wolfgang Backhaus, Jana Spille</p>
+        </div>
+        <div>
+          <h3>Contact:</h3>
+          <p>Phone: +49 221 606055-0</p>
+          <p>Fax: +49 221 606055-29</p>
+          <p>e-mail: d.franco@rupprecht-consult.eu</p>
+          <p>VAT No: DE198534371</p>
+        </div>
+        <div>
+          <h3>Liability for contents</h3>
+          <p>
+            We are responsible for our own content on these pages according to §
+            7 para.1 TMG (German Telemedia Act) and general laws. According to
+            §§ 8 to 10 TMG, we are not obliged to monitor transmitted or stored
+            external information or to investigate circumstances that indicate
+            illegal activity.
+          </p>
+          <p>
+            Obligations to remove or block the use of information according to
+            general laws remain unaffected. However, liability in this respect
+            is only possible from the time of knowledge of a concrete
+            infringement. If we become aware of any such infringements, we will
+            remove such content immediately.
+          </p>
+        </div>
+        <div>
+          <h3>Liability for links</h3>
+          <p>
+            Our offer contains links to external websites of third parties, on
+            whose contents we have no influence. Therefore we cannot assume any
+            liability for these external contents. The respective provider or
+            operator of the sites is always responsible for the contents of the
+            linked sites. The linked pages were checked for possible legal
+            violations at the time of linking. Illegal contents were not
+            recognizable at the time of linking.
+          </p>
+          <p>
+            However, a permanent control of the contents of the linked pages is
+            not reasonable without concrete evidence of a violation of the law.
+            If we become aware of any infringements, we will remove such links
+            immediately.
+          </p>
+        </div>
+        <div>
+          <h3>Copyright</h3>
+          <p>
+            This publication is the copyright of Rupprecht Consult - Forschung &
+            Beratung GmbH. All images and text elements in this publication, for
+            which a source is provided, are the property of the organisations or
+            individuals credited.
+          </p>
+
+          <p>
+            The authors would like to encourage the widespread use of these
+            Guidelines. This document may be used free of charge, copied and
+            redistributed via any medium, provided that (a) the source is
+            acknowledged by using the citation above and (b) the use of the
+            redistributed material is free of charge. Commercial use of this
+            document as well as modifications to its content are authorised only
+            with the express permission of the copyright holders.
+          </p>
+          <p>
+            In legal terms, use of this document is governed by Creative Commons
+            License CC BY-NC-ND 4.0 (Attribution-NonCommercial- NoDerivates 4.0
+            International). The legal text of the license is available at:
+            <a
+              href="https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode"
+              >https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode</a
+            >.
+          </p>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="img-wrapper"
+        >
+          <img src="./assets/imprint_img.png" alt="" />
+          <img src="assets/logos/FAME.jpg" alt="" />
+          <img src="assets/logos/PAV.jpg" alt="" />
+          <img src="assets/logos/Dynaxibility4CE.jpg" alt="" />
+          <img src="assets/logos/R2A.png" alt="" />
+          <img src="assets/logos/camo.png" alt="" />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div
+  fxLayout="row"
+  class="wrapper"
+  *ngIf="this.languageService.getLanguage() === 'German'"
+>
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Impressum</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div>
+          <p>Rupprecht Consult - Forschung und Beratung GmbH</p>
+          <p>Clever Strasse 13-15</p>
+          <p>50668 Köln</p>
+          <p>Handelsregister: 30833</p>
+          <p>Registergericht: Amtsgericht Köln</p>
+          <p>Vertreten durch: Siegfried Rupprecht</p>
+        </div>
+        <div>
+          <h3>Kontakt:</h3>
+          <p>Telefon: +49 221 606055-0</p>
+          <p>Telefax: +49 221 606055-29</p>
+          <p>E-Mail: s.rupprecht@rupprecht-consult.eu</p>
+          <p>Umsatzsteuer-ID: DE198534371</p>
+        </div>
+        <div>
+          <h3>Haftung für Inhalte</h3>
+          <p>
+            Wir sind gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten
+            nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG
+            sind wir als jedoch nicht verpflichtet, übermittelte oder
+            gespeicherte fremde Informationen zu überwachen oder nach Umständen
+            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+          <p>
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+            Informationen nach den allgemeinen Gesetzen bleiben hiervon
+            unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem
+            Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei
+            Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese
+            Inhalte umgehend entfernen.
+          </p>
+        </div>
+        <div>
+          <h3>Haftung für Links</h3>
+          <p>
+            Unser Angebot enthält Links zu externen Internetseiten Dritter, auf
+            deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
+            diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte
+            der verlinkten Seiten ist stets der jeweilige Anbieter oder
+            Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden
+            zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+            Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
+            erkennbar.
+          </p>
+          <p>
+            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist
+            jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
+            zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir
+            derartige Links umgehend entfernen.
+          </p>
+        </div>
+        <div>
+          <h3>Urheberrecht</h3>
+          <p>
+            Diese Publikation ist urheberrechtlich geschützt durch Rupprecht
+            Consult - Forschung & Beratung GmbH. Alle Bilder und Textelemente in
+            dieser Publikation, für die eine Quelle angegeben wird, sind
+            Eigentum der angegebenen Organisationen oder Personen.
+          </p>
+
+          <p>
+            Die Autorinnen und Autoren möchten die breite Nutzung dieses
+            Handbuchs fördern. Das Dokument darf kostenlos verwendet, kopiert
+            und über jedes beliebige Medium weiterverbreitet werden,
+            vorausgesetzt, dass (a) die Quelle unter Verwendung der obigen
+            Nennung genannt wird und (b) die Verwendung des weiterverbreiteten
+            Materials kostenlos ist. Die kommerzielle Nutzung dieses Dokuments
+            sowie Änderungen an seinem Inhalt sind nur mit ausdrücklicher
+            Genehmigung der Urheberrechtsinhaber gestattet.
+          </p>
+          <p>
+            Rechtlich gesehen unterliegt die Verwendung dieses Dokuments der
+            Creative-Commons-Lizenz CC BY-NC-ND 4.0 (Attribution-NonCommercial-
+            NoDerivates 4.0 International). Der Rechtstext der Lizenz ist
+            verfügbar unter:
+            <a
+              href="https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode"
+              >https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode</a
+            >.
+          </p>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="img-wrapper"
+        >
+          <img src="./assets/imprint_img.png" alt="" />
+          <img fxFlex="20" src="./assets/LOW-CARB_RGB.jpg" alt="" />
+          <img fxFlex="20" src="./assets/CIVITAS2020.jpg" alt="" />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div
+  fxLayout="row"
+  class="wrapper"
+  *ngIf="this.languageService.getLanguage() === 'Spanish'"
+>
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Imprenta</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div>
+          <p>Rupprecht Consult - Forschung und Beratung GmbH</p>
+          <p>Clever Street 13-15</p>
+          <p>50668 Cologne</p>
+          <p>Commercial register: 30833</p>
+          <p>Register court: Local court Cologne</p>
+          <p>Represented by: Siegfried Rupprecht</p>
+        </div>
+        <div>
+          <h3>Contacto:</h3>
+          <p>Phone: +49 221 606055-0</p>
+          <p>Fax: +49 221 606055-29</p>
+          <p>e-mail: s.rupprecht@rupprecht-consult.eu</p>
+          <p>VAT No: DE198534371</p>
+        </div>
+        <div>
+          <h3>Responsabilidad por el contenido</h3>
+          <p>
+            Somos responsables de nuestros propios contenidos en estas páginas
+            de acuerdo con el § 7 párrafo 1 TMG (Ley alemana de telemedios) y
+            las leyes generales. De acuerdo con los §§ 8 a 10 TMG, no estamos
+            obligados a controlar la información externa transmitida o
+            almacenada ni a investigar las circunstancias que indiquen una
+            actividad ilegal.
+          </p>
+          <p>
+            La obligación de eliminar o bloquear el uso de la información según
+            las leyes generales no se ve afectada. Sin embargo, la
+            responsabilidad a este respecto sólo es posible a partir del momento
+            en que se tiene conocimiento de una infracción concreta. Si tenemos
+            conocimiento de alguna de estas infracciones, eliminaremos dicho
+            contenido inmediatamente.
+          </p>
+        </div>
+        <div>
+          <h3>Responsabilidad por los enlaces</h3>
+          <p>
+            Nuestra oferta contiene enlaces a páginas web externas de terceros,
+            sobre cuyos contenidos no tenemos ninguna influencia. Por lo tanto,
+            no podemos asumir ninguna responsabilidad por estos contenidos
+            externos. El respectivo proveedor u operador de los sitios es
+            siempre responsable de los contenidos de los sitios enlazados. Las
+            páginas enlazadas han sido comprobadas en cuanto a posibles
+            infracciones legales en el momento de su enlace. Los contenidos
+            ilegales no eran reconocibles en el momento de la vinculación.
+          </p>
+          <p>
+            Sin embargo, no es razonable un control permanente de los contenidos
+            de las páginas enlazadas sin pruebas concretas de una violación de
+            la ley. Si tenemos conocimiento de alguna infracción, eliminaremos
+            dichos enlaces inmediatamente.
+          </p>
+        </div>
+        <div>
+          <h3>Derechos de autor</h3>
+          <p>
+            Esta publicación es propiedad de Rupprecht Consult - Forschung &
+            Beratung GmbH. Todas las imágenes y elementos de texto de esta
+            publicación, de los cuales se proporciona una fuente, son propiedad
+            de las organizaciones o individuos acreditados.
+          </p>
+
+          <p>
+            Los autores desean fomentar el uso generalizado de estas
+            directrices. Este documento puede ser utilizado gratuitamente,
+            copiado y redistribuido a través de cualquier medio, siempre que (a)
+            se reconozca la fuente utilizando la cita anterior y (b) el uso del
+            material redistribuido sea gratuito. El uso comercial de este
+            documento, así como las modificaciones de su contenido, sólo se
+            autorizan con la autorización expresa de los titulares de los
+            derechos de autor.
+          </p>
+          <p>
+            En términos legales, el uso de este documento se rige por la
+            Licencia Creative Commons CC BY-NC-ND 4.0 (Atribución-No
+            Comercial-NoDerivados 4.0 Internacional). El texto legal de la
+            licencia está disponible en:
+            <a
+              href="https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode"
+              >https://creativecommons.org/licenses/by-nc-nd/4.0/ legalcode</a
+            >.
+          </p>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="img-wrapper"
+        >
+          <img src="./assets/imprint_img.png" alt="" />
+          <img fxFlex="20" src="./assets/LOW-CARB_RGB.jpg" alt="" />
+          <img fxFlex="20" src="./assets/CIVITAS2020.jpg" alt="" />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

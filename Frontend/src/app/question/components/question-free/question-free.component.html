@@ -1,0 +1,31 @@
+<div fxLayout="row">
+  <div fxLayout="column" fxFlex [formGroup]="formGroup">
+    <mat-form-field *ngFor="let answer of answers; let i = index">
+      <input matInput
+             *ngIf="type === 'text+pie'"
+             (blur)="updateChart()"
+             type="number"
+             [placeholder]="answer.translation === '' ? free_label : answer.translation"
+             [formControlName]="i"
+      />
+
+      <input matInput
+             *ngIf="type !== 'text+pie'"
+             type="text"
+             [placeholder]="answer.translation === '' ? free_label : answer.translation"
+             [formControlName]="i"
+      />
+
+      <mat-icon matSuffix *ngIf="type === 'text+pie'" [style.color]="backgroundColors[i]">stop</mat-icon>
+    </mat-form-field>
+    <div *ngIf="type === 'text+pie'">
+      <p class="remaining-info">{{100 - getFormSum()}} {{remaining_text}}</p>
+    </div>
+  </div>
+
+
+  <div *ngIf="type === 'text+pie'" fxLayout="column" fxFlex>
+    <app-pie-chart fxLayoutAlign="center center" [data]="backgroundColors" [backgroundColors]="backgroundColors"
+                   [answers]="answers"></app-pie-chart>
+  </div>
+</div>

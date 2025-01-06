@@ -1,0 +1,77 @@
+image: docker:git
+services:
+  - docker:dind
+stages:
+  - deploy
+  - build
+  - deploy production
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose up --build --force-recreate -d
+  tags:
+    - static-deploy-shell
+  only:
+    - master
+    - dev
+
+build backend:
+  stage: build
+  tags:
+    - docker-privileged
+  script:
+    - docker build --build-arg TYPEORM_CONNECTION=${TYPEORM_CONNECTION} --build-arg TYPEORM_HOST=${TYPEORM_HOST} --build-arg TYPEORM_USERNAME=${TYPEORM_USERNAME} --build-arg TYPEORM_PASSWORD=${TYPEORM_PASSWORD} --build-arg TYPEORM_DATABASE=${TYPEORM_DATABASE} --build-arg TYPEORM_PORT=${TYPEORM_PORT} --build-arg TYPEORM_ENTITIES=${TYPEORM_ENTITIES} --build-arg JWT_SECRET=${JWT_SECRET} -t sump-backend $CI_PROJECT_DIR/Backend/
+    - docker save --output sump-backend.tar sump-backend
+  artifacts:
+    paths:
+      - sump-backend.tar
+
+build frontend:
+  stage: build
+  tags:
+    - docker-privileged
+  script:
+    - docker build -t sump-frontend $CI_PROJECT_DIR/Frontend/
+    - docker save --output sump-frontend.tar sump-frontend
+  artifacts:
+    paths:
+      - sump-frontend.tar
+
+build database:
+  stage: build
+  tags:
+    - docker-privileged
+  script:
+    - docker build -t sump-database $CI_PROJECT_DIR/Database/
+    - docker save --output sump-database.tar sump-database
+  artifacts:
+    paths:
+      - sump-database.tar
+
+
+deploy production:
+  stage: deploy production
+  image: alpine:latest
+  dependencies:
+    - build backend
+    - build frontend
+    - build database
+  when: manual
+  before_script:
+    - apk update
+    - apk add openssh
+    - mkdir -p ~/.ssh
+    - echo "$PRODUCTION_SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - scp sump-frontend.tar $PRODUCTION_SSH_USERNAME@$PRODUCTION_HOSTNAME:~
+    - scp sump-backend.tar $PRODUCTION_SSH_USERNAME@$PRODUCTION_HOSTNAME:~
+    - scp sump-database.tar $PRODUCTION_SSH_USERNAME@$PRODUCTION_HOSTNAME:~
+    - scp perform-database-backup.sh $PRODUCTION_SSH_USERNAME@$PRODUCTION_HOSTNAME:~
+    - ssh $PRODUCTION_SSH_USERNAME@$PRODUCTION_HOSTNAME 'bash -s' < deploy-production.sh
+  environment:
+    name: production
+    url: https://www.sump-assessment.eu/
+

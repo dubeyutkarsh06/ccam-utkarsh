@@ -1,0 +1,53 @@
+<mat-accordion id="accordion" #accordion="matAccordion" [multi]="true">
+  <mat-expansion-panel *ngFor="let feedback of feedbackArr; let i = index;" id="expansion-panel{{i}}" class="avoid-break">
+    <mat-expansion-panel-header>
+        <div fxLayout="row" class="expansion-header-content-wrapper">
+          <img src="assets/feedback_images/Comp_{{i + 1}}.png" alt=''/>
+          <div fxLayout="column" class="expansion-panel-content">
+            <h4>{{feedback.key}}</h4>
+            <div style="background-color: #FD4D4D;"
+                 class="rating-text"><span>{{rating_text[feedback.value.type]}}</span></div>
+            <!-- <div style="background-color: #FFDB58;"
+                 class="rating-text"
+                 *ngIf="feedback.value.type === 1"><span>{{rating_text[1]}}</span></div>
+            <div style="background-color: #89B564;"
+                 class="rating-text"
+                 *ngIf="feedback.value.type === 2"><span>{{rating_text[2]}}</span></div> -->
+          </div>
+        </div>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+
+      <div>
+        <div>
+          <br>
+          <div [ngClass]="{'noMarginBottom': isLast}"
+               *ngFor="let text of feedback.value.feedbackText.text; let i = index; last as isLast">
+            <span [ngClass]="{'title': isLast}">{{text}}</span>
+            <br *ngIf="!isLast">
+            <br *ngIf="!isLast">
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column">
+        <ul>
+          <li *ngFor="let list of feedback.value.feedbackText.list">{{list}}</li>
+        </ul>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between" class="avoid-break pdf-break">
+        <div fxLayout="column" fxFlex="45" class="avoid-break">
+          <span class="title avoid-break">
+            <a href="{{getURL(rating_text[feedback.value.type],feedback.key)}}" target="_blank"> {{feedback.value.gp_title}} </a>
+          </span>
+          <ul>
+            <li *ngFor="let goodPractice of feedback.value.goodPractices">
+              <a href="{{goodPractice.url}}" target="_blank">{{goodPractice.text}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

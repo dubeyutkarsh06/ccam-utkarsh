@@ -1,0 +1,117 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    <div
+      style="display: flex; align-items: center; justify-content: center"
+      fxLayoutAlign="start center"
+    >
+      <button mat-icon-button (click)="toggle()" class="menu-button">
+        <mat-icon aria-label="Menu">menu</mat-icon>
+      </button>
+      <span style="font-size: 1rem">{{ title }}</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1rem">
+      <app-language></app-language>
+      <button
+        style="text-align: center; align-content: center"
+        mat-icon-button
+        [routerLink]="'/' + this.languageService.getLanguage() + '/login'"
+      >
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <mat-icon>account_box</mat-icon>
+        </div>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlex [hasBackdrop]="false" class="sidenav-container">
+  <mat-sidenav
+    class="sidenav"
+    [mode]="'side'"
+    [@sidenavExpand]="sidenav"
+    opened
+  >
+    <mat-nav-list fxLayout="column" fxFlex fxLayoutAlign="space-between center">
+      <div>
+        <a
+          mat-list-item
+          routerLinkActive="accent-color"
+          [routerLink]="'/' + this.languageService.getLanguage() + '/start'"
+          class="nav-list-item"
+        >
+          <h2 class="icon-wrapper">0</h2>
+          <span *ngIf="sidenav.includes('expanded')">
+            {{ start }}
+          </span>
+        </a>
+
+        <a
+          mat-list-item
+          routerLinkActive="accent-color"
+          (click)="this.navigationService.changeCategory(category)"
+          [class.disabled]="
+            this.navigationService.categoryVisited(category) !== true
+          "
+          class="nav-list-item"
+          *ngFor="let category of categories; let i = index"
+          [routerLink]="createRouterLink(category)"
+        >
+          <h2 class="icon-wrapper">{{ i + 1 }}</h2>
+          <span *ngIf="sidenav.includes('expanded')">
+            {{ category }}
+          </span>
+        </a>
+
+        <a
+          mat-list-item
+          routerLinkActive="accent-color"
+          [routerLink]="'/' + this.languageService.getLanguage() + '/results'"
+          class="nav-list-item"
+        >
+          <mat-icon class="icon-wrapper">assessment</mat-icon>
+          <span *ngIf="sidenav.includes('expanded')">{{ result }}</span>
+        </a>
+      </div>
+      <div fxLayout="column" id="wrapper">
+        <a
+          mat-list-item
+          [routerLink]="'/' + this.languageService.getLanguage() + '/imprint'"
+          class="imprint-privacy nav-list-item"
+        >
+          <mat-icon class="icon-wrapper">fingerprint</mat-icon>
+          <span *ngIf="sidenav.includes('expanded')">
+            {{ imprint }}
+          </span>
+        </a>
+        <a
+          *ngIf="this.policyLanguage !== 'German'"
+          mat-list-item
+          href="./assets/CCAM__Self-Assessment_Data-privacy-note.pdf"
+          class="imprint-privacy nav-list-item"
+        >
+          <mat-icon class="icon-wrapper">policy</mat-icon>
+          <span *ngIf="sidenav.includes('expanded')">
+            {{ policy }}
+          </span>
+        </a>
+        <a
+          *ngIf="this.policyLanguage === 'German'"
+          mat-list-item
+          href="./assets/SUMP__Self-Assessment_Datenschutzerklärung.pdf"
+          class="imprint-privacy nav-list-item"
+        >
+          <mat-icon class="icon-wrapper">policy</mat-icon>
+          <span *ngIf="sidenav.includes('expanded')">
+            {{ policy }}
+          </span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content [@sidenavExpand]="content" cdkScrollable>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

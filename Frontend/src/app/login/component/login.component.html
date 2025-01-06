@@ -1,0 +1,40 @@
+<div fxLayout="row" class="wrapper">
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Login</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div fxLayout="column" [formGroup]="loginForm">
+          <mat-error *ngIf="wrongPw">username or password wrong</mat-error>
+          <mat-form-field>
+            <mat-label>username</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="username"
+              formControlName="username"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="password"
+              formControlName="password"
+            />
+          </mat-form-field>
+          <button mat-raised-button (click)="login()" color="accent">
+            login
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

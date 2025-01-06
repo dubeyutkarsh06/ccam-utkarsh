@@ -1,0 +1,6 @@
+<mat-radio-group fxLayout="column" aria-label="Select an option" [formControl]="radioControl">
+    <mat-radio-button *ngFor="let answer of answers" [value]="answer.translation">
+        <span>{{answer.translation}}</span>
+    </mat-radio-button>
+</mat-radio-group>
+<mat-error *ngIf="radioControl.invalid && radioControl.touched">{{error_text}}</mat-error>

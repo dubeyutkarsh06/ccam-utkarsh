@@ -1,0 +1,8 @@
+<p class="text" *ngFor="let text of finish.finish_text">
+  {{text}}
+</p>
+<ul>
+  <li  *ngFor="let links of finish.finish_links">
+    <a  href="{{links.url}}" class="text">{{links.text}}</a>
+  </li>
+</ul>

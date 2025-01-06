@@ -1,0 +1,53 @@
+<div class="wrapper" fxLayout="column" *ngIf="startData">
+  <div fxLayout="column" fxFlex fxLayoutAlign="center stretch">
+    <mat-card
+      style="margin-bottom: 10px"
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+    >
+      <span>{{ startData.reload_label }}</span>
+      <mat-form-field>
+        <input #token matInput placeholder="{{ this.startData.code }}" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="reloadUserData(token.value)"
+      >
+        {{ startData.reload_button }}
+      </button>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>{{ startData.title }}</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content fxLayout="column">
+        <h3>{{ startData.subtitle }}</h3>
+
+        <p [innerHTML]="startData.text1"></p>
+
+        <p [innerHTML]="startData.text2"></p>
+
+        <p [innerHTML]="startData.text3"></p>
+
+        <p [innerHTML]="startData.text4"></p>
+
+        <div fxLayout="row" id="startButton" fxLayoutAlign="center center">
+          <button mat-raised-button color="accent" (click)="updateRouter()">
+            {{ startData.start_button }}
+          </button>
+        </div>
+
+        <p [innerHTML]="startData.finish_text"></p>
+      </mat-card-content>
+    </mat-card>
+
+    <app-footer></app-footer>
+  </div>
+</div>
